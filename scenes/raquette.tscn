@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://4ve7d88s4xq7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1ou0g"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0fbxb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhurv"]
+size = Vector2(12, 164)
+
+[node name="Raquette" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_1ou0g")
+scale = Vector2(12, 163.5)
+texture = SubResource("CanvasTexture_0fbxb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uhurv")
