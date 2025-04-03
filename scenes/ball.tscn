@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5dswjy0lku0c"]
+
+[ext_resource type="Script" uid="uid://c112dqv7tmkrr" path="res://scripts/Ball.cs" id="1_cxlvu"]
+[ext_resource type="Texture2D" uid="uid://dmkqajs7jlmdv" path="res://assets/arts/Ball.png" id="2_f7cbr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4dx81"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eew57"]
+radius = 15.0333
+
+[node name="Ball" type="RigidBody2D"]
+script = ExtResource("1_cxlvu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_4dx81")
+texture = ExtResource("2_f7cbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eew57")
