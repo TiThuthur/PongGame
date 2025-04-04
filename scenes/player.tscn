@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ve7d88s4xq7"]
+
+[ext_resource type="Texture2D" uid="uid://4bvm26bceo4c" path="res://assets/arts/Player.png" id="1_0fbxb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1ou0g"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_1ou0g")
+texture = ExtResource("1_0fbxb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -60, 4, -56, 9, -49, 9, 51, 5, 55, -1, 59, -8, 60, -8, -60)

@@ -1,6 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://df8y3hscghgos"]
+[gd_scene load_steps=6 format=3 uid="uid://df8y3hscghgos"]
 
 [ext_resource type="Script" uid="uid://bx5vad7x00g5x" path="res://scripts/Screen.cs" id="1_erqjc"]
+[ext_resource type="Texture2D" uid="uid://cfbqko4r0firx" path="res://assets/arts/Board.png" id="2_nexl8"]
+[ext_resource type="PackedScene" uid="uid://b5dswjy0lku0c" path="res://scenes/ball.tscn" id="2_qc0hx"]
+[ext_resource type="PackedScene" uid="uid://4ve7d88s4xq7" path="res://scenes/player.tscn" id="3_nexl8"]
+[ext_resource type="PackedScene" uid="uid://c1al04fwa154e" path="res://scenes/opponent.tscn" id="4_vhdk8"]
 
 [node name="Screen" type="Node2D"]
 script = ExtResource("1_erqjc")
+
+[node name="Board" type="Sprite2D" parent="."]
+position = Vector2(574.5, 322.75)
+scale = Vector2(1.43766, 1.42527)
+texture = ExtResource("2_nexl8")
+
+[node name="Ball" parent="." instance=ExtResource("2_qc0hx")]
+position = Vector2(576, 300)
+
+[node name="Player2" parent="." instance=ExtResource("4_vhdk8")]
+position = Vector2(1122, 300)
+
+[node name="Player" parent="." instance=ExtResource("3_nexl8")]
+position = Vector2(32, 300)
+
+[node name="OpponentStartPosition" type="Marker2D" parent="."]
+position = Vector2(1122, 300)
+
+[node name="PlayerStartPosition" type="Marker2D" parent="."]
+position = Vector2(32, 300)
+
+[node name="BallStartPosition" type="Marker2D" parent="."]
+position = Vector2(576, 300)
