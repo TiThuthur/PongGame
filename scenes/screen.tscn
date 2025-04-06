@@ -1,33 +1,79 @@
-[gd_scene load_steps=6 format=3 uid="uid://df8y3hscghgos"]
+[gd_scene load_steps=8 format=3 uid="uid://df8y3hscghgos"]
 
 [ext_resource type="Script" uid="uid://bx5vad7x00g5x" path="res://scripts/Screen.cs" id="1_erqjc"]
 [ext_resource type="Texture2D" uid="uid://cfbqko4r0firx" path="res://assets/arts/Board.png" id="2_nexl8"]
-[ext_resource type="PackedScene" uid="uid://b5dswjy0lku0c" path="res://scenes/ball.tscn" id="2_qc0hx"]
 [ext_resource type="PackedScene" uid="uid://4ve7d88s4xq7" path="res://scenes/player.tscn" id="3_nexl8"]
 [ext_resource type="PackedScene" uid="uid://c1al04fwa154e" path="res://scenes/opponent.tscn" id="4_vhdk8"]
+[ext_resource type="PackedScene" uid="uid://deh1o3dcxrnkf" path="res://scenes/wall.tscn" id="6_b7nko"]
+[ext_resource type="FontFile" uid="uid://br1cui2yh4it" path="res://assets/font/Teko-VariableFont_wght.ttf" id="6_r04ab"]
+
+[sub_resource type="Theme" id="Theme_2oog4"]
+default_font_size = 28
+Label/fonts/font = ExtResource("6_r04ab")
 
 [node name="Screen" type="Node2D"]
 script = ExtResource("1_erqjc")
 
 [node name="Board" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(574.5, 322.75)
 scale = Vector2(1.43766, 1.42527)
 texture = ExtResource("2_nexl8")
 
-[node name="Ball" parent="." instance=ExtResource("2_qc0hx")]
-position = Vector2(576, 300)
-
-[node name="Player2" parent="." instance=ExtResource("4_vhdk8")]
+[node name="opponent" parent="." instance=ExtResource("4_vhdk8")]
 position = Vector2(1122, 300)
 
 [node name="Player" parent="." instance=ExtResource("3_nexl8")]
 position = Vector2(32, 300)
 
-[node name="OpponentStartPosition" type="Marker2D" parent="."]
-position = Vector2(1122, 300)
+[node name="Wall" parent="." instance=ExtResource("6_b7nko")]
 
-[node name="PlayerStartPosition" type="Marker2D" parent="."]
-position = Vector2(32, 300)
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
 
-[node name="BallStartPosition" type="Marker2D" parent="."]
-position = Vector2(576, 300)
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="Score" type="Label" parent="Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_right = 21.5
+offset_bottom = 41.0
+grow_horizontal = 2
+theme = SubResource("Theme_2oog4")
+text = "Score"
+
+[node name="OpponentScore" type="Label" parent="Container"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 768.0
+offset_right = -372.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme = SubResource("Theme_2oog4")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerScore" type="Label" parent="Container"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 384.0
+offset_right = -714.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme = SubResource("Theme_2oog4")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="StartTimer" to="." method="OnStartTimerTimeout"]
