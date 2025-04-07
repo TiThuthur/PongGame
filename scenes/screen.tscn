@@ -1,11 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://df8y3hscghgos"]
+[gd_scene load_steps=10 format=3 uid="uid://df8y3hscghgos"]
 
 [ext_resource type="Script" uid="uid://bx5vad7x00g5x" path="res://scripts/Screen.cs" id="1_erqjc"]
 [ext_resource type="Texture2D" uid="uid://cfbqko4r0firx" path="res://assets/arts/Board.png" id="2_nexl8"]
 [ext_resource type="PackedScene" uid="uid://4ve7d88s4xq7" path="res://scenes/player.tscn" id="3_nexl8"]
 [ext_resource type="PackedScene" uid="uid://c1al04fwa154e" path="res://scenes/opponent.tscn" id="4_vhdk8"]
-[ext_resource type="PackedScene" uid="uid://deh1o3dcxrnkf" path="res://scenes/wall.tscn" id="6_b7nko"]
+[ext_resource type="PackedScene" uid="uid://dysaxebvm2ww3" path="res://scenes/wall.tscn" id="6_b7nko"]
 [ext_resource type="FontFile" uid="uid://br1cui2yh4it" path="res://assets/font/Teko-VariableFont_wght.ttf" id="6_r04ab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7nko"]
+size = Vector2(13.75, 659)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r04ab"]
+size = Vector2(13.75, 659)
 
 [sub_resource type="Theme" id="Theme_2oog4"]
 default_font_size = 28
@@ -27,6 +33,19 @@ position = Vector2(1122, 300)
 position = Vector2(32, 300)
 
 [node name="Wall" parent="." instance=ExtResource("6_b7nko")]
+script = null
+
+[node name="DetectionLeft" type="Area2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/DetectionLeft"]
+position = Vector2(0.25, 320.5)
+shape = SubResource("RectangleShape2D_b7nko")
+
+[node name="DetectionRight" type="Area2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/DetectionRight"]
+position = Vector2(1151.88, 317.5)
+shape = SubResource("RectangleShape2D_r04ab")
 
 [node name="StartTimer" type="Timer" parent="."]
 one_shot = true
@@ -76,4 +95,5 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="body_entered" from="Wall/DetectionLeft" to="." method="OnDetectionLeftBodyEntered"]
 [connection signal="timeout" from="StartTimer" to="." method="OnStartTimerTimeout"]

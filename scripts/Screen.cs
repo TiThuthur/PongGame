@@ -4,6 +4,15 @@ using System;
 public partial class Screen : Node2D
 {
     int[] score = [0, 0];
+
+	public void OnDetectionLeftBodyEntered(Node2D body)
+	{
+		if (body == GetNode<CharacterBody2D>("Ball"))
+		{
+			GetNode<>
+		score[1] += 1;
+		}
+	}
 	private void OnStartTimerTimeout()
 	{
 		PackedScene packedScene = GD.Load<PackedScene>("res://scenes/ball.tscn");
@@ -20,9 +29,8 @@ public partial class Screen : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
-		CollisionShape2D leftWall = GetNode<CollisionShape2D>("Wall/Left");
-		CollisionShape2D rightWall = GetNode<CollisionShape2D>("Wall/Right");
+		GetNode<Label>("Container/PlayerScore").Text = score[0].ToString();
+		GetNode<Label>("Container/OpponentScore").Text = score[1].ToString();
 		
 	}
 }
