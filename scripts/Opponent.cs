@@ -24,16 +24,43 @@ public partial class Opponent : CharacterBody2D
     }
     public override void _PhysicsProcess(double delta)
     {
+        
         if (targetBall == null)
             return;
+        else{
         if (Math.Abs(targetBall.Position.Y - Position.Y) > 10)
         {
             float direction = targetBall.Position.Y > Position.Y ? 1 : -1;
+            GD.Print("Direction: " + direction);
             float velocityY = direction * speed * (float)delta;
-            Position = new Vector2(1122, Mathf.Clamp(velocityY,opponentSize.Y/2,ScreenSize.Y-opponentSize.Y/2));
+            GD.Print("velocityY" + velocityY);
+            
+            if (Position.Y >= 648 - opponentSize.Y/2)
+            {
+                Position = new Vector2(1122,ScreenSize.Y-opponentSize.Y/2);
+                GD.Print("IF 1");
+                // targetBall = null;
+                // while (Position.Y >= ScreenSize.Y/2)
+                // {
+                //     Position += new Vector2(0,1*speed*(float)delta);
+                // }
+            }else if (Position.Y <= 0 + opponentSize.Y /2)
+            {
+                Position = new Vector2(1122,opponentSize.Y/2);
+                GD.Print("IF 2");
+                //targetBall = null;
+                // while (Position.Y <= ScreenSize.Y/2)
+                // {
+                //     Position += new Vector2(0, -1*speed*(float)delta);
+                // }
+            }else
+            {
+                Position += new Vector2(0, velocityY);    
+                GD.Print("IF 3");
+            }
             
         }
-        
+        }
         
     }
 

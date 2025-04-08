@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cfbqko4r0firx" path="res://assets/arts/Board.png" id="2_nexl8"]
 [ext_resource type="PackedScene" uid="uid://4ve7d88s4xq7" path="res://scenes/player.tscn" id="3_nexl8"]
 [ext_resource type="PackedScene" uid="uid://c1al04fwa154e" path="res://scenes/opponent.tscn" id="4_vhdk8"]
-[ext_resource type="PackedScene" uid="uid://deh1o3dcxrnkf" path="res://scenes/wall.tscn" id="6_b7nko"]
+[ext_resource type="PackedScene" uid="uid://dysaxebvm2ww3" path="res://scenes/wall.tscn" id="6_b7nko"]
 [ext_resource type="FontFile" uid="uid://br1cui2yh4it" path="res://assets/font/Teko-VariableFont_wght.ttf" id="6_r04ab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7nko"]
