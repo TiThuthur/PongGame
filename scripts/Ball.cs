@@ -12,10 +12,10 @@ public partial class Ball : CharacterBody2D
 	private Vector2 GetRandomDirection()
 	{
 		Vector2 newDirection = new();
-		RandomNumberGenerator rng = new();
-		newDirection.X = rng.RandfRange(-1,1);
-		newDirection.Y = rng.RandfRange(-1,1);
-		return newDirection.Normalized();
+		RandomNumberGenerator rng = new();// création d'un nouvelle objet rng pour RandomNumberGenerator
+		newDirection.X = rng.RandfRange(-1,1);//random direction en X
+		newDirection.Y = rng.RandfRange(-1,1);//random direction en Y
+		return newDirection.Normalized();//return du Vecteur 2 normalisé
 	}
 
     // Called when the node enters the scene tree for the first time.
