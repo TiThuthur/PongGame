@@ -18,23 +18,20 @@ public partial class Ball : CharacterBody2D
 		return newDirection.Normalized();//return du Vecteur 2 normalisé
 	}
 
-    // Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		ScreenSize = GetViewportRect().Size;
-		Position = new Vector2(ScreenSize.X / 2, ScreenSize.Y / 2);
-		velocity = GetRandomDirection() * speed;
-		direction = velocity;
+		ScreenSize = GetViewportRect().Size;//récupère la taille de l'écran
+		Position = new Vector2(ScreenSize.X / 2, ScreenSize.Y / 2);//Place la balle au millieu de l'écran
+		direction = GetRandomDirection() * speed;//donne une direction aléatoire à la balle
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		
-		KinematicCollision2D collision = MoveAndCollide(velocity * (float)delta);
+		KinematicCollision2D collision = MoveAndCollide(direction * (float)delta);//MoveAndCollide 
 		if (collision != null)
 		{
-			velocity = velocity.Bounce(collision.GetNormal()) * 1.05f;
+			direction = direction.Bounce(collision.GetNormal()) * 1.05f;
 			
 		}
 	}
