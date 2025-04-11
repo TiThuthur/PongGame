@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5dswjy0lku0c"]
+[gd_scene load_steps=12 format=3 uid="uid://b5dswjy0lku0c"]
 
 [ext_resource type="Script" uid="uid://c112dqv7tmkrr" path="res://scripts/Ball.cs" id="1_cxlvu"]
 [ext_resource type="Texture2D" uid="uid://dmkqajs7jlmdv" path="res://assets/arts/Ball.png" id="2_f7cbr"]
@@ -73,11 +73,16 @@ _data = {
 &"explode": SubResource("Animation_f7cbr")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f7cbr"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f7cbr"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
 [node name="Ball" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_cxlvu")
-speed = 600
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -105,3 +110,7 @@ libraries = {
 }
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_f7cbr")
+amount = 20
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_f7cbr")
